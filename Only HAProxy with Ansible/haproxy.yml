@@ -1,0 +1,21 @@
+- hosts: web_lbs
+  become: true
+  gather_facts: false
+
+  tasks:
+          - name: Installing HAProxy Software
+            package:
+                    name: haproxy
+                    state: present
+
+          - name: Configuring the conf file of haproxy
+            template:
+                    src: haproxy.cfg
+                    dest: /etc/haproxy/haproxy.cfg
+
+            notify: haproxy service
+
+          - name: start the haproxy service
+            service:
+                      name: haproxy
+                      state: started
