@@ -25,12 +25,6 @@
                     name: httpd
                     state: started
 
-  handlers:
-          - name: Web-service
-            service:
-                    name: httpd
-                    state: restarted
-
 
 
 - hosts: web_lbs
@@ -48,15 +42,7 @@
                     src: haproxy.cfg
                     dest: /etc/haproxy/haproxy.cfg
 
-            notify: haproxy service
-
           - name: start the haproxy service
             service:
                       name: haproxy
                       state: started
-
-  handlers:
-          - name: haproxy service
-            service:
-                    name: haproxy
-                    state: restarted
