@@ -1,5 +1,5 @@
 <pre>
 <?php
-print `/usr/sbin/ifconfig`;
+echo "Hello from Server";
 ?>
 </pre>
